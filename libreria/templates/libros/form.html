@@ -1,0 +1,32 @@
+<form enctype="multipart/form-data" method="post">
+
+<!-- este token le indica a Django que la información de este formulario le corresponde a esta aplicacion -->
+{% csrf_token %}
+{% for campo in formulario %}
+
+<div class="mb-3">
+  <label for="" class="form-label">{{ campo.label }}</label> <!--estos valores predefenidios vienen de verbose_name -> models.py-->
+  
+  {% if campo.field.widget.input_type == 'file' and campo.value %}
+  <br>
+  <img src="{{ MEDIA_URL }}/imagenes/{{campo.value}}" width="100" alt="">
+  <br>
+  {% endif %}
+
+  <input 
+    type="{{ campo.field.widget.input_type }}"
+    class="form-control" 
+    name="{{ campo.name }}" 
+    id="" 
+    aria-describedby="helpId" 
+    placeholder="{{ campo.label }}"
+    value="{{ campo.value | default:''}}">
+    
+</div>
+<div class="col-12 help-text">{{ campo.errors }}</div>
+{% endfor %}
+
+<input name="" id="" class="btn btn-succes" type="submit" value="Enviar información">
+<a name="" id="" class="btn btn-primary" href="{% url 'libros' %}" role="button">Cancelar</a>
+
+</form>

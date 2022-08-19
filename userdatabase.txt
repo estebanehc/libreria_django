@@ -1,0 +1,11 @@
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'graciast_libreria',
+        'USER': 'graciast_esteban',
+        'PASSWORD': 'estebanherrera',
+        'HOST': '162.241.61.250',
+        'PORT': '3306',
+    }
+
+superuser: esteban - estebanherrera
